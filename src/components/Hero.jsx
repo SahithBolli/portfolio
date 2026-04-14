@@ -80,7 +80,7 @@ export default function Hero() {
       <div
         id="hero-photo-bg"
         className="absolute top-0 right-0 h-full"
-        style={{ width: '52%', opacity: 0 }}
+        style={{ width: '52%' }}
         aria-hidden="true"
       >
         {/* actual photo */}
