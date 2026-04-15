@@ -130,6 +130,11 @@ button  { cursor: none; border: none; background: none; font: inherit; }
   box-shadow: 0 20px 48px rgba(0,0,0,.4), 0 0 0 1px rgba(6,214,160,.06);
 }
 
+/* ── bento span (only on large screens) ── */
+@media (min-width: 1024px) {
+  .bento-cell { grid-column: span var(--span); }
+}
+
 /* ── sec-line ── */
 .sec-line {
   width: 52px; height: 3px;

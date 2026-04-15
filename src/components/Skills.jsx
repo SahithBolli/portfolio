@@ -44,16 +44,14 @@ export default function Skills() {
         <div className="skills-sec-line sec-line mb-12" />
 
         {/* Bento grid — 12 cols on lg, 1 col on mobile */}
-        <div
-          className="bento-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4"
-        >
+        <div className="bento-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4">
           {skills.map(skill => (
             <div
               key={skill.title}
-              className="bento-cell rounded-2xl border border-[var(--bdr)] p-6 flex flex-col gap-4 overflow-hidden"
+              className="bento-cell rounded-2xl border border-[var(--bdr)] p-6 flex flex-col gap-4"
               style={{
-                background:  'var(--card)',
-                gridColumn:  `span ${skill.span}`,
+                background: 'var(--card)',
+                ['--span']: skill.span,
               }}
             >
               {/* header */}

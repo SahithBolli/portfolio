@@ -1,9 +1,9 @@
-import { Syne, Inter } from 'next/font/google'
+import { Outfit, Inter } from 'next/font/google'
 import './globals.css'
 
-const syne = Syne({
+const syne = Outfit({
   subsets: ['latin'],
-  weight: ['400', '600', '700', '800'],
+  weight: ['400', '600', '700', '800', '900'],
   variable: '--font-syne',
   display: 'swap',
 })

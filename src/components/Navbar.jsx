@@ -43,8 +43,8 @@ export default function Navbar() {
       aria-label="Main navigation"
     >
       {/* logo */}
-      <a href="#hero" className="flex items-center gap-2.5 font-display font-extrabold text-[1.05rem] text-[var(--txt)]" aria-label="Home">
-        <span className="w-2 h-2 rounded-full bg-[var(--brand)] pulse" aria-hidden="true" />
+      <a href="#hero" className="flex items-center gap-2 font-display font-extrabold text-[.95rem] lg:text-[1.05rem] text-[var(--txt)] whitespace-nowrap" aria-label="Home">
+        <span className="w-2 h-2 flex-shrink-0 rounded-full bg-[var(--brand)] pulse" aria-hidden="true" />
         Sahith Bolli
       </a>
 
