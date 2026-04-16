@@ -2,7 +2,7 @@ export const experience = [
   {
     company:  'Honeywell',
     role:     'Java Full Stack Developer',
-    period:   'Jan 2024 — Present',
+    period:   'Jan 2025 — Present',
     location: 'Charlotte, NC',
     current:  true,
     bullets: [
@@ -16,7 +16,7 @@ export const experience = [
   {
     company:  'JELD-WEN',
     role:     'Java Full Stack Developer',
-    period:   'Apr 2023 — Dec 2023',
+    period:   'Apr 2024 — Dec 2024',
     location: 'Charlotte, NC',
     current:  false,
     bullets: [
@@ -43,7 +43,7 @@ export const experience = [
   {
     company:  'Teva Pharmaceuticals',
     role:     'Java Developer',
-    period:   'Mar 2019 — Oct 2021',
+    period:   'Jun 2019 — Oct 2021',
     location: 'Bangalore, India',
     current:  false,
     bullets: [
