@@ -16,7 +16,7 @@ export const experience = [
   {
     company:  'JELD-WEN',
     role:     'Java Full Stack Developer',
-    period:   'Apr 2024 — Dec 2024',
+    period:   'Jan 2024 — Dec 2024',
     location: 'Charlotte, NC',
     current:  false,
     bullets: [
@@ -43,7 +43,7 @@ export const experience = [
   {
     company:  'Teva Pharmaceuticals',
     role:     'Java Developer',
-    period:   'Jun 2019 — Oct 2021',
+    period:   'Jan 2020 — Oct 2021',
     location: 'Bangalore, India',
     current:  false,
     bullets: [
