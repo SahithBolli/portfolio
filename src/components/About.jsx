@@ -8,7 +8,7 @@ const miniCards = [
   {
     icon: '⚡', iconBg: 'rgba(6,214,160,.1)',
     title: 'Currently at Honeywell',
-    body:  'Java Full Stack Developer building communications infrastructure at scale — email, SMS, and push for enterprise.',
+    body:  'Senior Java Full Stack Developer architecting 30+ microservices on AWS EKS for a communications platform processing millions of daily notifications.',
   },
   {
     icon: '☁️', iconBg: 'rgba(139,92,246,.1)',
