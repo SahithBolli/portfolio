@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { skills } from '@/data'
+import TiltCard from './TiltCard'
 
 export default function Skills() {
   const ref = useRef(null)
@@ -46,7 +47,7 @@ export default function Skills() {
         {/* Bento grid — 12 cols on lg, 1 col on mobile */}
         <div className="bento-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4">
           {skills.map(skill => (
-            <div
+            <TiltCard
               key={skill.title}
               className="bento-cell rounded-2xl border border-[var(--bdr)] p-6 flex flex-col gap-4"
               style={{
@@ -89,7 +90,7 @@ export default function Skills() {
                   </span>
                 ))}
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

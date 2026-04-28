@@ -5,43 +5,60 @@ export default function Cursor() {
   useEffect(() => {
     const dot  = document.getElementById('c-dot')
     const ring = document.getElementById('c-ring')
-    if (!dot || !ring) return
+    const glow = document.getElementById('c-glow')
+    if (!dot || !ring || !glow) return
 
-    let mx = -200, my = -200, rx = -200, ry = -200
+    let mx = -200, my = -200, rx = -200, ry = -200, gx = -200, gy = -200
     let raf
 
     const onMove  = e => { mx = e.clientX; my = e.clientY }
-    const onLeave = () => { dot.classList.add('gone');    ring.classList.add('gone') }
-    const onEnter = () => { dot.classList.remove('gone'); ring.classList.remove('gone') }
+    const onLeave = () => {
+      dot.classList.add('gone')
+      ring.classList.add('gone')
+      glow.classList.add('gone')
+    }
+    const onEnter = () => {
+      dot.classList.remove('gone')
+      ring.classList.remove('gone')
+      glow.classList.remove('gone')
+    }
 
-    window.addEventListener('mousemove',     onMove,   { passive: true })
-    document.addEventListener('mouseleave',  onLeave)
-    document.addEventListener('mouseenter',  onEnter)
+    window.addEventListener('mousemove',    onMove,   { passive: true })
+    document.addEventListener('mouseleave', onLeave)
+    document.addEventListener('mouseenter', onEnter)
 
     const loop = () => {
       dot.style.left  = mx + 'px'
       dot.style.top   = my + 'px'
+
       rx += (mx - rx) * 0.13
       ry += (my - ry) * 0.13
       ring.style.left = rx + 'px'
       ring.style.top  = ry + 'px'
+
+      gx += (mx - gx) * 0.05
+      gy += (my - gy) * 0.05
+      glow.style.left = gx + 'px'
+      glow.style.top  = gy + 'px'
+
       raf = requestAnimationFrame(loop)
     }
     raf = requestAnimationFrame(loop)
 
-    // grow cursor over interactive elements (event delegation)
     const onOver = e => {
       if (e.target.closest('a, button, [data-hover]')) {
-        dot.classList.add('big'); ring.classList.add('big')
+        dot.classList.add('big')
+        ring.classList.add('big')
       }
     }
     const onOut = e => {
       if (e.target.closest('a, button, [data-hover]')) {
-        dot.classList.remove('big'); ring.classList.remove('big')
+        dot.classList.remove('big')
+        ring.classList.remove('big')
       }
     }
-    document.addEventListener('mouseover',  onOver)
-    document.addEventListener('mouseout',   onOut)
+    document.addEventListener('mouseover', onOver)
+    document.addEventListener('mouseout',  onOut)
 
     return () => {
       window.removeEventListener('mousemove',    onMove)
@@ -57,6 +74,7 @@ export default function Cursor() {
     <>
       <div className="c-dot"  id="c-dot"  aria-hidden="true" />
       <div className="c-ring" id="c-ring" aria-hidden="true" />
+      <div className="c-glow" id="c-glow" aria-hidden="true" />
     </>
   )
 }

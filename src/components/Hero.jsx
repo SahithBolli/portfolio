@@ -1,11 +1,42 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import MagneticButton from './MagneticButton'
+
+const ROLES = [
+  'Senior Java Full Stack Developer',
+  'Cloud-Native Architect',
+  'Backend Systems Engineer',
+  'AWS & Kafka Specialist',
+]
 
 export default function Hero() {
   const canvasRef = useRef(null)
   const heroRef   = useRef(null)
+
+  const [roleIdx,  setRoleIdx]  = useState(0)
+  const [charIdx,  setCharIdx]  = useState(ROLES[0].length)
+  const [deleting, setDeleting] = useState(false)
+
+  useEffect(() => {
+    const role = ROLES[roleIdx]
+    let t
+    if (!deleting) {
+      if (charIdx < role.length) {
+        t = setTimeout(() => setCharIdx(c => c + 1), 72)
+      } else {
+        t = setTimeout(() => setDeleting(true), 2200)
+      }
+    } else {
+      if (charIdx > 0) {
+        t = setTimeout(() => setCharIdx(c => c - 1), 38)
+      } else {
+        setDeleting(false)
+        setRoleIdx(i => (i + 1) % ROLES.length)
+      }
+    }
+    return () => clearTimeout(t)
+  }, [charIdx, deleting, roleIdx])
 
   /* ── particle canvas ── */
   useEffect(() => {
@@ -174,7 +205,8 @@ export default function Hero() {
               className="font-display font-semibold"
               style={{ fontSize: 'clamp(.95rem,1.8vw,1.2rem)', color: 'var(--txt2)' }}
             >
-              Senior Full Stack Engineer
+              {ROLES[roleIdx].slice(0, charIdx)}
+              <span className="typing-cursor" aria-hidden="true" />
             </p>
             <p
               className="text-[.88rem] max-w-[420px]"

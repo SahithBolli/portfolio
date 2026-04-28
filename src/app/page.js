@@ -1,4 +1,5 @@
-import Cursor     from '@/components/Cursor'
+import Cursor         from '@/components/Cursor'
+import ScrollProgress from '@/components/ScrollProgress'
 import Navbar     from '@/components/Navbar'
 import Hero       from '@/components/Hero'
 import Marquee    from '@/components/Marquee'
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <>
       {/* fixed overlays */}
+      <ScrollProgress />
       <Cursor />
       <svg
         className="grain"

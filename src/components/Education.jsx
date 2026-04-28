@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { education } from '@/data'
+import TiltCard from './TiltCard'
 
 export default function Education() {
   const ref = useRef(null)
@@ -45,9 +46,9 @@ export default function Education() {
 
         <div className="edu-list grid lg:grid-cols-3 gap-5">
           {education.map(item => (
-            <div
+            <TiltCard
               key={item.name}
-              className={`edu-card rounded-2xl border p-7 flex flex-col gap-5 transition-[border-color,transform] duration-200 hover:-translate-y-1 ${
+              className={`edu-card rounded-2xl border p-7 flex flex-col gap-5 ${
                 item.type === 'degree'
                   ? 'border-[rgba(6,214,160,.22)] lg:col-span-1'
                   : 'border-[var(--bdr)]'
@@ -95,7 +96,7 @@ export default function Education() {
                   {item.badge}
                 </span>
               )}
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

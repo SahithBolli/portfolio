@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { experience } from '@/data'
+import TiltCard from './TiltCard'
 
 function Chip({ label }) {
   return (
@@ -115,7 +116,7 @@ export default function Experience() {
                 />
 
                 {/* ── RIGHT card ── */}
-                <div
+                <TiltCard
                   className="rounded-2xl border border-[var(--bdr)] p-5 lg:p-7 exp-card"
                   style={{ background: 'var(--card)' }}
                 >
@@ -142,7 +143,7 @@ export default function Experience() {
                   <div className="flex flex-wrap gap-2">
                     {job.chips.map(c => <Chip key={c} label={c} />)}
                   </div>
-                </div>
+                </TiltCard>
 
               </div>
             ))}

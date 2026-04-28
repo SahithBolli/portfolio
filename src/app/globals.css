@@ -173,3 +173,28 @@ section { will-change: auto; }
 .glow-on-hover:hover {
   text-shadow: 0 0 24px rgba(6,214,160,.45);
 }
+
+/* ── cursor spotlight glow ── */
+.c-glow {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9996;
+  border-radius: 50%;
+  width: 480px; height: 480px;
+  background: radial-gradient(ellipse at center, rgba(6,214,160,.045) 0%, transparent 68%);
+  transform: translate(-50%, -50%);
+  transition: opacity .6s;
+}
+.c-glow.gone { opacity: 0; }
+
+/* ── typing cursor blink ── */
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.typing-cursor {
+  display: inline-block;
+  width: 2px; height: 1.1em;
+  background: var(--brand);
+  margin-left: 3px;
+  vertical-align: text-bottom;
+  border-radius: 1px;
+  animation: blink 1s step-end infinite;
+}
