@@ -2,6 +2,48 @@
 import { useEffect, useRef, useState } from 'react'
 import MagneticButton from './MagneticButton'
 
+const CALENDLY_URL = 'https://calendly.com/sahithbolli143/30min'
+
+function CalendlyModal({ onClose }) {
+  useEffect(() => {
+    const onKey = e => e.key === 'Escape' && onClose()
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [onClose])
+
+  return (
+    <div
+      className="fixed inset-0 z-[999] flex items-center justify-center px-4"
+      style={{ background: 'rgba(0,0,0,.65)', backdropFilter: 'blur(6px)' }}
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full rounded-2xl overflow-hidden shadow-2xl"
+        style={{ maxWidth: '900px', height: 'min(82vh, 680px)', background: '#1a1a1a' }}
+        onClick={e => e.stopPropagation()}
+      >
+        {/* close button */}
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+          aria-label="Close"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <path d="M1 1l12 12M13 1L1 13"/>
+          </svg>
+        </button>
+        <iframe
+          src={`${CALENDLY_URL}?hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&primary_color=06D6A0`}
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          title="Book a call with Sahith"
+        />
+      </div>
+    </div>
+  )
+}
+
 const ROLES = [
   'Senior Java Full Stack Developer',
   'Cloud-Native Architect',
@@ -23,6 +65,7 @@ const GitHubIcon = () => (
 
 export default function Hero() {
   const heroRef = useRef(null)
+  const [showCalendly, setShowCalendly] = useState(false)
 
   /* ── typing animation ── */
   const [roleIdx,  setRoleIdx]  = useState(0)
@@ -43,6 +86,8 @@ export default function Hero() {
   }, [charIdx, deleting, roleIdx])
 
   return (
+    <>
+    {showCalendly && <CalendlyModal onClose={() => setShowCalendly(false)} />}
     <section
       id="hero"
       ref={heroRef}
@@ -118,8 +163,8 @@ export default function Hero() {
         {/* CTA + socials */}
         <div className="flex items-center gap-3">
           <MagneticButton
-            as="a"
-            href="mailto:sahithbolli980@gmail.com"
+            as="button"
+            onClick={() => setShowCalendly(true)}
             className="font-display font-bold tracking-[.06em] uppercase px-7 py-3 rounded-lg transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,0,0,.15)]"
             style={{ fontSize: '.82rem', background: 'var(--txt)', color: 'var(--bg)' }}
           >
@@ -161,5 +206,6 @@ export default function Hero() {
       </div>
 
     </section>
+    </>
   )
 }
