@@ -153,35 +153,10 @@ export default function About() {
                 style={{ background: 'linear-gradient(to bottom, rgba(10,10,12,.35) 0%, rgba(10,10,12,.6) 100%)' }}
               />
 
-              {/* content overlaid on photo */}
-              <div className="relative z-10 p-8 lg:p-10 flex flex-col justify-between h-full" style={{ minHeight: '420px' }}>
-                <div>
-                  <p className="text-[.68rem] font-bold tracking-[.18em] uppercase mb-4" style={{ color: 'rgba(255,255,255,.5)' }}>
-                    What I bring
-                  </p>
-                  <div className="about-roles-row flex flex-col gap-3">
-                    {roles.map(r => (
-                      <div
-                        key={r.tag}
-                        className="about-role-chip rounded-xl px-5 py-4 flex items-center justify-between transition-all duration-200 hover:translate-x-1"
-                        style={{
-                          background: 'rgba(255,255,255,.10)',
-                          border: '1px solid rgba(255,255,255,.15)',
-                          backdropFilter: 'blur(10px)',
-                        }}
-                      >
-                        <span className="text-[.6rem] font-bold tracking-[.12em] uppercase" style={{ color: 'var(--brand)' }}>{r.tag}</span>
-                        <span className="font-display font-extrabold text-[.95rem] text-white">{r.title}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* name at bottom */}
-                <div className="pt-4 border-t border-white/10">
-                  <p className="font-display font-bold text-[.9rem] text-white">Sahith Bolli</p>
-                  <p className="text-[.68rem]" style={{ color: 'rgba(255,255,255,.55)' }}>Senior Java Full Stack Developer</p>
-                </div>
+              {/* name at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 z-10 px-6 py-4" style={{ background: 'linear-gradient(to top, rgba(10,10,12,.85) 0%, transparent 100%)' }}>
+                <p className="font-display font-bold text-[.9rem] text-white">Sahith Bolli</p>
+                <p className="text-[.68rem]" style={{ color: 'rgba(255,255,255,.55)' }}>Senior Java Full Stack Developer</p>
               </div>
             </div>
 
