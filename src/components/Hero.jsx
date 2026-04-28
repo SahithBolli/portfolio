@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import MagneticButton from './MagneticButton'
 
-const CALENDLY_URL = 'https://calendly.com/sahithbolli980/30min'
+const CALENDLY_URL = 'https://calendly.com/sahithbolli980/new-meeting'
 
 function CalendlyModal({ onClose }) {
   useEffect(() => {
