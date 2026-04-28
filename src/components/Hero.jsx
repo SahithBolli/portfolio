@@ -94,27 +94,31 @@ export default function Hero() {
         </span>
       </div>
 
-      {/* ── photo (right side, above name) ── */}
+      {/* ── photo (right side, fills full height) ── */}
       <div
-        className="absolute bottom-0 right-[2%] sm:right-[6%] lg:right-[10%] z-20 pointer-events-none"
-        style={{ height: '82vh' }}
+        className="absolute top-0 bottom-0 right-0 z-20 pointer-events-none"
+        style={{ width: 'clamp(280px, 30vw, 440px)' }}
         aria-hidden="true"
       >
         <img
           src="/sahith.jpg"
           alt=""
           style={{
+            width:           '100%',
             height:          '100%',
-            width:           'auto',
             objectFit:       'cover',
             objectPosition:  'top center',
-            maxWidth:        '320px',
           }}
         />
         {/* fade bottom of photo into bg */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-16"
+          className="absolute bottom-0 left-0 right-0 h-24"
           style={{ background: 'linear-gradient(to top, var(--bg), transparent)' }}
+        />
+        {/* fade left edge into bg */}
+        <div
+          className="absolute top-0 bottom-0 left-0 w-16"
+          style={{ background: 'linear-gradient(to right, var(--bg), transparent)' }}
         />
       </div>
 
