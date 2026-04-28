@@ -10,12 +10,6 @@ const stats = [
   { value: '4',   label: 'Companies'              },
 ]
 
-const roles = [
-  { tag: 'ARCHITECT',  title: 'Systems Lead'     },
-  { tag: 'CLOUD',      title: 'AWS Specialist'   },
-  { tag: 'AI',         title: 'LLM Integrations' },
-]
-
 export default function About() {
   const ref = useRef(null)
 
@@ -29,10 +23,6 @@ export default function About() {
       gsap.from('.about-stat', {
         y: 20, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'power3.out',
         scrollTrigger: { trigger: '.about-stats-row', start: 'top 95%', once: true },
-      })
-      gsap.from('.about-role-chip', {
-        y: 16, opacity: 0, stagger: 0.09, duration: 0.55, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-roles-row', start: 'top 98%', once: true },
       })
     }, ref)
     return () => ctx.revert()

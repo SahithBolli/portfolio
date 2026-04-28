@@ -139,13 +139,6 @@ export const education = [
   },
 ]
 
-export const stats = [
-  { target: 5,  suffix: '+', label: 'Years Experience',          sub: 'Backend & Full Stack' },
-  { target: 30, suffix: '+', label: 'Microservices Deployed',    sub: 'On AWS EKS with Helm' },
-  { target: 35, suffix: '%', label: 'Faster Incident Resolution', sub: 'Via Kafka pipelines' },
-  { target: 40, suffix: '%', label: 'Performance Gains',          sub: 'DB & pipeline optimisations' },
-]
-
 export const marqueeItems = [
   'Java', 'Spring Boot', 'AWS EKS', 'Kafka', 'Kubernetes',
   'Terraform', 'Docker', 'React', 'Next.js', 'Node.js',
