@@ -24,15 +24,15 @@ export default function About() {
     const ctx = gsap.context(() => {
       gsap.from('.about-card', {
         y: 40, opacity: 0, duration: 0.85, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-card', start: 'top 82%' },
+        scrollTrigger: { trigger: '.about-card', start: 'top 95%', once: true },
       })
       gsap.from('.about-stat', {
         y: 20, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-stats-row', start: 'top 85%' },
+        scrollTrigger: { trigger: '.about-stats-row', start: 'top 95%', once: true },
       })
       gsap.from('.about-role-chip', {
         y: 16, opacity: 0, stagger: 0.09, duration: 0.55, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-roles-row', start: 'top 88%' },
+        scrollTrigger: { trigger: '.about-roles-row', start: 'top 98%', once: true },
       })
     }, ref)
     return () => ctx.revert()
@@ -153,41 +153,22 @@ export default function About() {
                 ))}
               </div>
 
-              {/* certifications card */}
+              {/* photo card */}
               <div
-                className="mt-4 rounded-2xl border border-[var(--bdr)] p-5 flex flex-col gap-3"
-                style={{ background: 'var(--card)' }}
+                className="mt-4 rounded-2xl overflow-hidden border border-[var(--bdr)]"
+                style={{ aspectRatio: '4/3', position: 'relative', background: 'var(--bg2)' }}
               >
-                <p className="text-[.6rem] font-bold tracking-[.14em] uppercase mb-1" style={{ color: 'var(--txt3)' }}>
-                  Certifications
-                </p>
-                {[
-                  { icon: '☁️', label: 'AWS Developer Associate', sub: 'Amazon Web Services' },
-                  { icon: '☕', label: 'Oracle Java SE 11',        sub: 'Oracle Certified Professional' },
-                ].map(c => (
-                  <div
-                    key={c.label}
-                    className="flex items-center gap-3 rounded-xl px-4 py-3 border border-[var(--bdr)]"
-                    style={{ background: 'var(--bg2)' }}
-                  >
-                    <span style={{ fontSize: '1.4rem', lineHeight: 1 }}>{c.icon}</span>
-                    <div>
-                      <p className="font-display font-bold text-[.82rem] leading-tight" style={{ color: 'var(--txt)' }}>{c.label}</p>
-                      <p className="text-[.65rem] mt-0.5" style={{ color: 'var(--txt3)' }}>{c.sub}</p>
-                    </div>
-                    <div className="ml-auto w-2 h-2 rounded-full" style={{ background: 'var(--brand)' }} />
-                  </div>
-                ))}
-                <div className="mt-1 flex flex-wrap gap-1.5">
-                  {['Java', 'Spring Boot', 'Kafka', 'AWS EKS', 'Terraform', 'React'].map(t => (
-                    <span
-                      key={t}
-                      className="text-[.62rem] font-medium px-2 py-0.5 rounded-md"
-                      style={{ background: 'var(--bg2)', color: 'var(--txt3)', border: '1px solid var(--bdr)' }}
-                    >
-                      {t}
-                    </span>
-                  ))}
+                <img
+                  src="/sahith.jpg"
+                  alt="Sahith Bolli"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
+                />
+                <div
+                  className="absolute bottom-0 left-0 right-0 px-4 py-3"
+                  style={{ background: 'linear-gradient(to top, rgba(10,10,12,.85) 0%, transparent 100%)' }}
+                >
+                  <p className="font-display font-bold text-[.8rem] text-white">Sahith Bolli</p>
+                  <p className="text-[.68rem] text-white/60">Senior Java Full Stack Developer</p>
                 </div>
               </div>
             </div>
