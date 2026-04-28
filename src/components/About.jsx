@@ -135,40 +135,52 @@ export default function About() {
               </div>
             </div>
 
-            {/* right — role cards */}
-            <div className="p-8 lg:p-10 flex flex-col gap-4 justify-center" style={{ background: 'var(--bg2)' }}>
-              <p className="text-[.68rem] font-bold tracking-[.18em] uppercase mb-2" style={{ color: 'var(--txt3)' }}>
-                What I bring
-              </p>
-              <div className="about-roles-row flex flex-col gap-3">
-                {roles.map(r => (
-                  <div
-                    key={r.tag}
-                    className="about-role-chip rounded-xl border border-[var(--bdr)] px-5 py-4 flex items-center justify-between transition-all duration-200 hover:border-[var(--brand-bdr)] hover:translate-x-1"
-                    style={{ background: 'var(--card)' }}
-                  >
-                    <span className="text-[.6rem] font-bold tracking-[.12em] uppercase" style={{ color: 'var(--brand)' }}>{r.tag}</span>
-                    <span className="font-display font-extrabold text-[.95rem]" style={{ color: 'var(--txt)' }}>{r.title}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* photo card */}
+            {/* right — full-bleed photo with overlay */}
+            <div className="relative overflow-hidden" style={{ minHeight: '420px' }}>
+              {/* full-bleed photo */}
+              <img
+                src="/sahith.jpg"
+                alt="Sahith Bolli"
+                style={{
+                  position: 'absolute', inset: 0,
+                  width: '100%', height: '100%',
+                  objectFit: 'cover', objectPosition: 'top center',
+                }}
+              />
+              {/* dark gradient overlay */}
               <div
-                className="mt-4 rounded-2xl overflow-hidden border border-[var(--bdr)]"
-                style={{ aspectRatio: '4/3', position: 'relative', background: 'var(--bg2)' }}
-              >
-                <img
-                  src="/sahith.jpg"
-                  alt="Sahith Bolli"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
-                />
-                <div
-                  className="absolute bottom-0 left-0 right-0 px-4 py-3"
-                  style={{ background: 'linear-gradient(to top, rgba(10,10,12,.85) 0%, transparent 100%)' }}
-                >
-                  <p className="font-display font-bold text-[.8rem] text-white">Sahith Bolli</p>
-                  <p className="text-[.68rem] text-white/60">Senior Java Full Stack Developer</p>
+                className="absolute inset-0"
+                style={{ background: 'linear-gradient(to bottom, rgba(10,10,12,.35) 0%, rgba(10,10,12,.6) 100%)' }}
+              />
+
+              {/* content overlaid on photo */}
+              <div className="relative z-10 p-8 lg:p-10 flex flex-col justify-between h-full" style={{ minHeight: '420px' }}>
+                <div>
+                  <p className="text-[.68rem] font-bold tracking-[.18em] uppercase mb-4" style={{ color: 'rgba(255,255,255,.5)' }}>
+                    What I bring
+                  </p>
+                  <div className="about-roles-row flex flex-col gap-3">
+                    {roles.map(r => (
+                      <div
+                        key={r.tag}
+                        className="about-role-chip rounded-xl px-5 py-4 flex items-center justify-between transition-all duration-200 hover:translate-x-1"
+                        style={{
+                          background: 'rgba(255,255,255,.10)',
+                          border: '1px solid rgba(255,255,255,.15)',
+                          backdropFilter: 'blur(10px)',
+                        }}
+                      >
+                        <span className="text-[.6rem] font-bold tracking-[.12em] uppercase" style={{ color: 'var(--brand)' }}>{r.tag}</span>
+                        <span className="font-display font-extrabold text-[.95rem] text-white">{r.title}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* name at bottom */}
+                <div className="pt-4 border-t border-white/10">
+                  <p className="font-display font-bold text-[.9rem] text-white">Sahith Bolli</p>
+                  <p className="text-[.68rem]" style={{ color: 'rgba(255,255,255,.55)' }}>Senior Java Full Stack Developer</p>
                 </div>
               </div>
             </div>

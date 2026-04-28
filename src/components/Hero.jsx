@@ -65,7 +65,7 @@ export default function Hero() {
         style={{ top: '100px' }}
         aria-hidden="true"
       >
-        {['Java Developer', 'Cloud Architect', 'Backend Engineer'].map(role => (
+        {['Software Developer', 'Full Stack Engineer', 'AI Engineer'].map(role => (
           <span
             key={role}
             className="font-display font-bold tracking-[.18em] uppercase"
@@ -94,33 +94,6 @@ export default function Hero() {
         </span>
       </div>
 
-      {/* ── photo (right side, fills full height) ── */}
-      <div
-        className="absolute top-0 bottom-0 right-0 z-20 pointer-events-none"
-        style={{ width: 'clamp(280px, 30vw, 440px)' }}
-        aria-hidden="true"
-      >
-        <img
-          src="/sahith.jpg"
-          alt=""
-          style={{
-            width:           '100%',
-            height:          '100%',
-            objectFit:       'cover',
-            objectPosition:  'top center',
-          }}
-        />
-        {/* fade bottom of photo into bg */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-24"
-          style={{ background: 'linear-gradient(to top, var(--bg), transparent)' }}
-        />
-        {/* fade left edge into bg */}
-        <div
-          className="absolute top-0 bottom-0 left-0 w-16"
-          style={{ background: 'linear-gradient(to right, var(--bg), transparent)' }}
-        />
-      </div>
 
       {/* ── bottom bar ── */}
       <div
