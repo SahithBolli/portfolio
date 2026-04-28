@@ -2,19 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── tokens ── */
+/* ── tokens (light theme) ── */
 :root {
-  --bg:         #020209;
-  --bg2:        #07070F;
-  --card:       #0C0C1B;
-  --card2:      #101022;
-  --brand:      #06D6A0;
-  --brand-dim:  rgba(6,214,160,.10);
-  --brand-bdr:  rgba(6,214,160,.22);
-  --txt:        #EFEFFA;
-  --txt2:       #8A8AAA;
-  --txt3:       #4A4A68;
-  --bdr:        rgba(255,255,255,.07);
+  --bg:        #F8F8F6;
+  --bg2:       #EFEFEC;
+  --card:      #FFFFFF;
+  --card2:     #F4F4F2;
+  --brand:     #06D6A0;
+  --brand-dim: rgba(6,214,160,.10);
+  --brand-bdr: rgba(6,214,160,.30);
+  --txt:       #0A0A0C;
+  --txt2:      #3C3C48;
+  --txt3:      #8C8C98;
+  --bdr:       rgba(0,0,0,.07);
 }
 
 /* ── base ── */
@@ -42,52 +42,62 @@ button  { cursor: none; border: none; background: none; font: inherit; }
   transform: translate(-50%, -50%);
   transition: opacity .3s;
 }
-.c-dot  { width: 8px;  height: 8px;  background: var(--brand); }
+.c-dot  { width: 8px;  height: 8px;  background: var(--txt); }
 .c-ring {
   width: 38px; height: 38px;
-  border: 1.5px solid rgba(6,214,160,.5);
+  border: 1.5px solid rgba(6,214,160,.6);
   transition: width .25s, height .25s, border-color .25s;
 }
 .c-dot.big  { width: 12px; height: 12px; }
 .c-ring.big { width: 58px; height: 58px; border-color: var(--brand); }
 .c-dot.gone, .c-ring.gone { opacity: 0; }
 
+/* ── cursor spotlight glow ── */
+.c-glow {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9996;
+  border-radius: 50%;
+  width: 480px; height: 480px;
+  background: radial-gradient(ellipse at center, rgba(6,214,160,.06) 0%, transparent 68%);
+  transform: translate(-50%, -50%);
+  transition: opacity .6s;
+}
+.c-glow.gone { opacity: 0; }
+
 /* ── grain overlay ── */
 .grain {
   position: fixed; inset: 0;
-  pointer-events: none; z-index: 9998; opacity: .03;
+  pointer-events: none; z-index: 9998; opacity: .018;
 }
 
 /* ── scrollbar ── */
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--brand); border-radius: 2px; opacity: .4; }
+::-webkit-scrollbar-thumb { background: var(--brand); border-radius: 2px; }
 
 /* ── marquee ── */
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 .marquee-a { animation: marquee 35s linear infinite; }
 .marquee-b { animation: marquee 35s linear infinite; animation-delay: -17.5s; }
 
-/* ── scroll indicator ── */
-@keyframes scrollLine {
-  0%   { transform: scaleY(0); transform-origin: top; }
-  50%  { transform: scaleY(1); transform-origin: top; }
-  51%  { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
-}
-.scroll-line-anim { animation: scrollLine 2s ease infinite; }
-
 /* ── pulse ── */
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.55;transform:scale(.82)} }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
 .pulse { animation: pulse 2.2s ease infinite; }
 
-/* ── floating badge shimmer ── */
-@keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position:  200% center; }
+/* ── typing cursor blink ── */
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.typing-cursor {
+  display: inline-block;
+  width: 2px; height: 1.1em;
+  background: var(--brand);
+  margin-left: 3px;
+  vertical-align: text-bottom;
+  border-radius: 1px;
+  animation: blink 1s step-end infinite;
 }
 
-/* ── exp card left bar ── */
+/* ── exp card ── */
 .exp-card {
   position: relative;
   transition: border-color .3s, transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s;
@@ -104,12 +114,11 @@ button  { cursor: none; border: none; background: none; font: inherit; }
 }
 .exp-card:hover::before { transform: scaleY(1); }
 .exp-card:hover {
-  border-color: rgba(6,214,160,.22) !important;
-  transform: translateY(-4px) translateX(2px);
-  box-shadow: 0 24px 56px rgba(0,0,0,.45), 0 0 0 1px rgba(6,214,160,.08), 0 0 40px rgba(6,214,160,.04);
+  border-color: rgba(6,214,160,.28) !important;
+  box-shadow: 0 16px 48px rgba(0,0,0,.08), 0 0 0 1px rgba(6,214,160,.06);
 }
 
-/* ── bento cell glow ── */
+/* ── bento cell ── */
 .bento-cell {
   position: relative;
   transition: border-color .3s, transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s;
@@ -118,16 +127,15 @@ button  { cursor: none; border: none; background: none; font: inherit; }
 .bento-cell::before {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(6,214,160,.06), transparent 65%);
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(6,214,160,.05), transparent 65%);
   opacity: 0;
   transition: opacity .35s;
   pointer-events: none;
 }
 .bento-cell:hover::before { opacity: 1; }
 .bento-cell:hover {
-  border-color: rgba(6,214,160,.2) !important;
-  transform: translateY(-4px);
-  box-shadow: 0 20px 48px rgba(0,0,0,.4), 0 0 0 1px rgba(6,214,160,.06);
+  border-color: rgba(6,214,160,.22) !important;
+  box-shadow: 0 12px 36px rgba(0,0,0,.08), 0 0 0 1px rgba(6,214,160,.05);
 }
 
 /* ── bento span (only on large screens) ── */
@@ -142,21 +150,25 @@ button  { cursor: none; border: none; background: none; font: inherit; }
   border-radius: 2px;
 }
 
-/* ── section fade-in (fallback) ── */
-section { will-change: auto; }
-
 /* ── edu card hover ── */
 .edu-card {
   transition: border-color .3s, transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s;
 }
 .edu-card:hover {
-  box-shadow: 0 16px 48px rgba(0,0,0,.4);
+  box-shadow: 0 12px 36px rgba(0,0,0,.08);
 }
 
-/* ── link underline grow ── */
-.link-grow {
-  position: relative;
+/* ── scroll indicator ── */
+@keyframes scrollLine {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  51%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
 }
+.scroll-line-anim { animation: scrollLine 2s ease infinite; }
+
+/* ── link underline ── */
+.link-grow { position: relative; }
 .link-grow::after {
   content: '';
   position: absolute; left: 0; bottom: -2px;
@@ -166,35 +178,4 @@ section { will-change: auto; }
 }
 .link-grow:hover::after { width: 100%; }
 
-/* ── teal text glow on hover ── */
-.glow-on-hover {
-  transition: text-shadow .2s;
-}
-.glow-on-hover:hover {
-  text-shadow: 0 0 24px rgba(6,214,160,.45);
-}
-
-/* ── cursor spotlight glow ── */
-.c-glow {
-  position: fixed;
-  pointer-events: none;
-  z-index: 9996;
-  border-radius: 50%;
-  width: 480px; height: 480px;
-  background: radial-gradient(ellipse at center, rgba(6,214,160,.045) 0%, transparent 68%);
-  transform: translate(-50%, -50%);
-  transition: opacity .6s;
-}
-.c-glow.gone { opacity: 0; }
-
-/* ── typing cursor blink ── */
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-.typing-cursor {
-  display: inline-block;
-  width: 2px; height: 1.1em;
-  background: var(--brand);
-  margin-left: 3px;
-  vertical-align: text-bottom;
-  border-radius: 1px;
-  animation: blink 1s step-end infinite;
-}
+section { will-change: auto; }

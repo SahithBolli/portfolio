@@ -70,12 +70,10 @@ export default function Contact() {
       className="py-36 px-6 lg:px-12 relative overflow-hidden"
       style={{ background: 'var(--bg)' }}
     >
-      {/* radial glow behind content */}
+      {/* subtle glow */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 60% 50% at 50% 100%, rgba(6,214,160,.07) 0%, transparent 70%)',
-        }}
+        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 100%, rgba(6,214,160,.06) 0%, transparent 70%)' }}
         aria-hidden="true"
       />
 
